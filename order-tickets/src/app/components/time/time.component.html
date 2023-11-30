@@ -1,9 +1,0 @@
-<div class="time-div">
-  <button color="primary" [disabled]="isTicketDisabled(time)" (click)="SelectionTicket(time)">
-    <h3>{{time.startTime}}</h3>
-
-    <span *ngIf="ticketSoldOut(time)">אזלו</span>
-    <span *ngIf="ticketClosed(time)">סגור</span>
-    <span *ngIf="freeTicket(time)">{{time.availablePlaces}} כרטיסים</span>
-  </button>
-</div>
