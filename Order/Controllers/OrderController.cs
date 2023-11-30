@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc;
 using System.Data;
 using Newtonsoft.Json;
 
@@ -19,7 +19,9 @@ namespace Order.Controllers
         [Route("GetTicketsByStartTime")]
         public JsonResult GetTicketsByStartTime(string startTime1, string startTime2, string startTime3, string startTime4)
         {
-            string jsonFilePath = "C:\\Users\\This_user\\Desktop\\Order\\Order\\Order\\Order.json";
+            string currentDirectory = Directory.GetCurrentDirectory();
+            string jsonFilePath = Path.Combine(currentDirectory, "..\\Order\\Order.json");
+            jsonFilePath = Path.GetFullPath(jsonFilePath);
             string jsonContent = System.IO.File.ReadAllText(jsonFilePath);
 
             List<Time> tickets = JsonConvert.DeserializeObject<List<Time>>(jsonContent);
