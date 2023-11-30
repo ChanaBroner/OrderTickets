@@ -61,7 +61,9 @@ namespace Order.Controllers
         [Route("DoOrder")]
         public IActionResult DoOrder(string startTime, int seats)
         {
-            string jsonFilePath = "C:\\Users\\This_user\\Desktop\\Order\\Order\\Order\\Order.json";
+            string currentDirectory = Directory.GetCurrentDirectory();
+            string jsonFilePath = Path.Combine(currentDirectory, "..\\Order\\Order.json");
+            jsonFilePath = Path.GetFullPath(jsonFilePath);
             string jsonContent = System.IO.File.ReadAllText(jsonFilePath);
 
             List<Time> times = JsonConvert.DeserializeObject<List<Time>>(jsonContent);
