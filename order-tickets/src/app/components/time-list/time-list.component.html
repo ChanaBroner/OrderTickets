@@ -1,0 +1,4 @@
+<div class="time-list-container">
+  <app-time *ngFor="let t of list" [time]="t" [seats]="seats"
+    (ticketSelected)="handleTicketSelected($event)"></app-time>
+</div>
