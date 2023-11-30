@@ -22,6 +22,8 @@ export class TimeComponent implements OnInit {
     this.ticketSelected.emit(ticket);
   }
 
+  //In the 'isClosed' variable, True/False (with capital letter), so I used the following methods:
+  
   isTicketDisabled(time: Time): boolean {
     const isClosed = time.isClosed;
     if (isClosed.toString().length == 4)
