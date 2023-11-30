@@ -22,6 +22,19 @@ export class ContainerComponent implements OnInit {
   currentDate: Date;
   idTicket: number;
   startTime: string;
+
+  morning8: string = "8";
+  morning9: string = "9";
+  morning10: string = "10";
+  morning11: string = "11";
+
+  afretnoon12: string = "12";
+  afretnoon13: string = "13";
+  afretnoon14: string = "14";
+
+  evening15: string = "15";
+
+  noTime: string = "4"; // No hour starts at 4.
   
 
   constructor(private timeService: TimeService) { }
@@ -59,7 +72,7 @@ export class ContainerComponent implements OnInit {
 
     this.enterPressed = true;
 
-    this.timeService.getTicketsByStartTime("8", "9", "10", "11").subscribe(
+    this.timeService.getTicketsByStartTime(this.morning8, this.morning9, this.morning10, this.morning11).subscribe(
       result => {
         this.morningList = result;
         this.timeList = result;
@@ -69,7 +82,7 @@ export class ContainerComponent implements OnInit {
         console.error(error);
       }
     );
-    this.timeService.getTicketsByStartTime("12", "13", "14", "3").subscribe(
+    this.timeService.getTicketsByStartTime(this.afretnoon12, this.afretnoon13, this.afretnoon14, this.noTime).subscribe(
       result => {
         this.afternoonList = result;
         console.log(this.afternoonList);
@@ -78,7 +91,7 @@ export class ContainerComponent implements OnInit {
         console.error(error);
       }
     );
-    this.timeService.getTicketsByStartTime("15", "3", "3", "3").subscribe(
+    this.timeService.getTicketsByStartTime(this.evening15, this.noTime, this.noTime, this.noTime).subscribe(
       result => {
         this.eveningList = result;
         console.log(this.eveningList);
@@ -138,6 +151,3 @@ export class ContainerComponent implements OnInit {
     this.nextPressed = false;
   }
 }
-
-
-
